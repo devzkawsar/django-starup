@@ -1,0 +1,26 @@
+FROM python:3.12-alpine
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1 
+
+WORKDIR /app
+
+# Copy the requirements files
+COPY ../../../requirements/development.txt ../../../requirements/common.txt /app/
+
+RUN \
+ apk add --no-cache postgresql-libs && \
+ apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
+ python3 -m pip install -r development.txt --no-cache-dir && \
+ apk --purge del .build-deps
+
+# Copy the entire project to the working directory
+COPY ../../../ /app/
+
+# Copy and set permissions for the entrypoint script
+COPY ../../../deployments/docker/dev/entrypoint.sh /etc/entrypoint.sh
+RUN chmod +x /etc/entrypoint.sh
+
+EXPOSE 8000
+
+CMD [ "/etc/entrypoint.sh" ]
