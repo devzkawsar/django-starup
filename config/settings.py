@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,7 +24,7 @@ SECRET_KEY = (
     "django-insecure-$227hjjmuq2e!)o^@2&#2v#+(-=@$v362o@8g#s9!2)tjn1)1a"
 )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -74,12 +74,12 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'your-db-name',
-        'USER': 'your-db-user',
-        'PASSWORD': 'your-db-user-password',
-        'HOST': 'your-db-host',
-        'PORT': 'your-db-port',
+        'ENGINE': os.environ.get('JTRO_DEV_DATABASE_ENGINE'),
+        'NAME': os.environ.get('JTRO_DEV_DATABASE_NAME'),
+        'USER': os.environ.get('JTRO_DEV_DATABASE_USER'),
+        'PASSWORD': os.environ.get('JTRO_DEV_DATABASE_PASSWORD'),
+        'HOST': os.environ.get('JTRO_DEV_DATABASE_HOST'),
+        'PORT': os.environ.get('JTRO_DEV_DATABASE_PORT'),
     }
 }
 
