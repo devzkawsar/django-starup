@@ -12,9 +12,11 @@ services:
             - ../../../:/app
         ports:
             - '5031:8000'
+        depends_on:
+            - web-db
 
     web-db:
-        image: postgres:13-alpine
+        image: postgres:16-alpine
         volumes:
             - postgres_data:/var/lib/postgresql/data
         environment:
