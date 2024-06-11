@@ -7,12 +7,12 @@ load_dotenv(
     os.path.join(os.path.dirname(__file__), '.env')
 )
 
-# if os.environ.get('ENVIRONMENT') == "production":
-#     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings.production")
-# else:
-#     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings.dev")
+if os.environ.get('ENV_NAME') == "DEV":
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
+else:
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.dev")
 
-chdir = os.environ.get("CHDIR","opt/app/")
+chdir = os.environ.get("CHDIR","/app/")
 
 module = "config.wsgi:application"
 

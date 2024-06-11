@@ -1,10 +1,10 @@
 # Your urls go here
+app_name = "web"
 from django.urls import path, include
-
-from wagtail.admin import urls as wagtailadmin_urls
-from wagtail import urls as wagtail_urls
-from wagtail.documents import urls as wagtaildocs_urls
+from apps.web.views import  (
+    index
+)
 
 urlpatterns = [
-    
+    path("", index, name='index'),
 ]

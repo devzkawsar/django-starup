@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(PROJECT_DIR)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +28,7 @@ SECRET_KEY = (
     "django-insecure-$227hjjmuq2e!)o^@2&#2v#+(-=@$v362o@8g#s9!2)tjn1)1a"
 )
 
-ALLOWED_HOSTS = ['*','0.0.0.0:5031']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,6 +58,11 @@ INSTALLED_APPS = [
 
     # custom app
     "apps.core",
+    "apps.web",
+    "apps.home",
+    "apps.search",
+    "apps.base",
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -74,7 +82,11 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        # "DIRS": [],
+        "DIRS": [
+            os.path.join(BASE_DIR, "common/templates"),
+            os.path.join(BASE_DIR, 'common/frontend/templates')
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -82,6 +94,9 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+
+                #wagtail
+                "wagtail.contrib.settings.context_processors.settings",
             ],
         },
     },
@@ -138,10 +153,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
+
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "static/"
 
-STATIC_ROOT = BASE_DIR / "static"
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+COMPRESS_ROOT = BASE_DIR / 'static'
+COMPRESS_ENABLED = True
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
