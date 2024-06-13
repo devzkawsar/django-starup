@@ -10,4 +10,8 @@
         font-display: swap;
         src: url('../src/fonts/Helvetica.ttf');
     }
+    
+    html {
+        @apply text-gray-500;
+    }
 }
