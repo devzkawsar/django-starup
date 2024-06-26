@@ -1,6 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "flowbite";
 
 @layer base {
     @font-face {
@@ -9,9 +10,5 @@
         font-weight: 400;
         font-display: swap;
         src: url('../src/fonts/Helvetica.ttf');
-    }
-    
-    html {
-        @apply text-gray-500;
     }
 }

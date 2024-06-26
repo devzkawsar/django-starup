@@ -85,7 +85,7 @@ TEMPLATES = [
         # "DIRS": [],
         "DIRS": [
             os.path.join(BASE_DIR, "common/templates"),
-            os.path.join(BASE_DIR, 'common/frontend/templates')
+            os.path.join(BASE_DIR, 'common/frontend'),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -161,7 +161,7 @@ USE_TZ = True
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "static/"
 
-# STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = BASE_DIR / "static"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 COMPRESS_ROOT = BASE_DIR / 'static'
