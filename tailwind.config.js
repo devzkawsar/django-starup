@@ -31,8 +31,19 @@ module.exports = {
       widest: '.75em',
     },
     fontFamily: {
-      'sans': ['Helvetica'],
-    }
+      sans: ['Jost', 'Arial', 'sans-serif'],
+    },
+    fontWeight: {
+      thin: 100,
+      extralight: 200,
+      light: 300,
+      normal: 400,
+      medium: 500,
+      semibold: 600,
+      bold: 700,
+      extrabold: 800,
+      black: 900,
+    },
   },
   darkMode: "class",
   plugins: [
