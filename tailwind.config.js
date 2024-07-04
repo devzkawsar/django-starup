@@ -21,6 +21,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'primery': "#131315",
+        'secondary': '#979aa1',
+        'third': "#f8b195",
+      },
     },
     letterSpacing: {
       tighter: '-.5em',
@@ -31,7 +36,7 @@ module.exports = {
       widest: '.75em',
     },
     fontFamily: {
-      sans: ['Jost', 'Arial', 'sans-serif'],
+      sans: ['Jost'],
     },
     fontWeight: {
       thin: 100,
