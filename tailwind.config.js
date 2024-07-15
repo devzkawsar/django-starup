@@ -9,6 +9,9 @@ module.exports = {
     './node_modules/flowbite/**/*.js'
   ],
   theme: {
+    container: {
+      padding: '0rem',
+    },
     extend: {
       colors: {
         'primery': "#131315",
